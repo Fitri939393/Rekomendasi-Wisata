@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Wisata Di Malang</title>
+
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+
+        .section1{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.285), rgba(0, 0, 0, 0.2855)), url('image/bromo.webp');
+            background-size: cover;
+            height: 100vh;
+            background-position: center;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: rgba(52, 58, 64, 0.95);
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar h4 {
+            text-align: center;
+            padding: 1rem 0;
+            color: white;
+        }
+        .sidebar a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: white;
+            padding: 10px 20px;
+            display: block;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+            color: white;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .dropdown-menu {
+            padding-left: 1.5rem;
+            margin: 0;
+            display: none;
+            background-color: #495057; /* Menetapkan latar belakang dropdown menjadi putih */
+        }
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            font-size: 0.9rem;
+            color: white; /* Mengatur warna teks dropdown menjadi hitam */
+        }
+        .dropdown-menu a:hover {
+            color: #ffffff75;
+        }
+        .content {
+            margin-left: 0;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+        .content.shifted {
+            margin-left: 250px;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 1100;
+        }
+        .toggle-btn:hover {
+            background-color: #495057;
+        }
+
+        footer {
+            background-color: #495057;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 13px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <h4>Menu</h4>
+        <a href="index.html">Home</a>
+        
+        <!-- Dropdown 1 -->
+        <div class="dropdown">
+            <a href="#section2" class="dropdown-toggle" data-dropdown="dropdown1">Tempat Wisata</a>
+            <div class="dropdown-menu" id="dropdown1">
+                <a href="jatimpark1.html">Jatim Park 1</a>
+                <a href="jatimpark2.html">Jatim Park 2</a>
+                <a href="jatimpark3.html">Jatim Park 3</a>
+                <a href="baloga.html">Batu Love Garden</a>
+                <a href="drivethrupark.html">Drive Thru Park</a>
+                <a href="museumangkut.html">Museum Angkut</a>
+                <a href="bns.html">Batu Nihgt Spectacular</a>
+                <a href="selecta.html">Taman Rekreasi Selecta</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="toggle-btn" id="toggleBtn">
+        ☰
+    </button>
+
+
+    <div class="container-fixed">
+        <div class="section1">
+            <p style="text-align: center; padding-top: 12.5rem; font-size: 1.9rem; font-weight: bold; color: white; font-family: Playfair Display;">
+                Bingung Mau Liburan Ke Mana?<br>
+            Nih Rekomendasi Tempat Wisata Di Malang Yang Cocok Untuk Liburan
+            </p>
+
+            <p style="text-align: center; padding-top: 1rem; font-size: 1.1rem; color: white; font-family: sans-serif">
+                Kadang bingung ga sih kalau udah liburan itu mau ngapain paling sering juga rebahan dikamar,<br>
+                nah daripada gabut mending jalan-jalan aja. Kali ini aku kasih rekomendasi tempat wisata di <br>
+                Malang yang cocok untuk mengisi liburan kalian bersama keluarga, sahabat ataupun pacar kalian.
+            </p>
+        </div>
+
+    <div id="section2">
+        <div class="container-fluid">
+            <p style="padding-top: 5rem; font-size: 1.5rem; font-weight: bold; ">
+                BEBERAPA REKOMENDASI TEMPAT<br>
+                WISATA YANG SERU DI MALANG
+            </p>
+
+            <p>
+                Beberapa tempat ini sangat hits dan sering dikunjungi oleh warga Malang maupun luar kota,<br>
+                dan pastinya sangat cocok untuk dikunjungi bersama keluarga, sahabat, maupun kekasih.
+            </p>
+            <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="image/gambar6.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Jatim Park 1</h5>
+                      <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                       4,7/5 (5rb Review)</p>
+
+                      <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 115.000</p>
+                      <a href="jatimpark1.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="image/gambar8.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Jatim Park 2</h5>
+                      <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                      4,7/5 (3.7rb Review)</p>
+
+                    <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 125.000</p>
+                    <a href="jatimpark2.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                  </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="image/gambar16.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Jatim Park 3</h5>
+                      <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                      4.6/5 (2.5rb Review)</p>
+
+                    <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 40.000</p>
+                    <a href="jatimpark3.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                      <img src="image/gambar23.webp" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Batu Love Garden</h5>
+                        <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                        4,6/5 (802 Review)</p>
+
+                        <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 50.000</p>
+                        <a href="baloga.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-4 g-4" style="margin-bottom: 2rem;">
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="image/gambar30.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Drive Thru Park</h5>
+                      <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                       4,8/5 (149 Review)</p>
+
+                      <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 50.000</p>
+                      <a href="drivethrupark.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="image/gambar37.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Museum Angkut</h5>
+                      <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                      4,6/5 (2.2rb Review)</p>
+
+                    <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 110.000</p>
+                    <a href="museumangkut.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                  </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="image/gambar44.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Batu Night Spectaculer</h5>
+                      <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                      4.6/5 (929 Review)</p>
+
+                    <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 45.000</p>
+                    <a href="bns.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                      <img src="image/gambar51.webp" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Taman Rekreasi Selecta</h5>
+                        <p class="card-text" style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.644);">Batu, Malang<br>
+                        4,7/5 (190 Review)</p>
+
+                        <p class="card-text" style="color: red; font-size: 1.3rem; font-weight: bold; padding-top: 1rem;">IDR 50.000</p>
+                        <a href="selecta.html" class="btn btn-primary stretched-link">Info Selengkapnya</a>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              </div>
+        </div>         
+    </div>
+
+    <div class="content">
+    </div>
+    <footer>
+        &copy; 2024 Pesona Indonesia
+    </footer>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Custom JavaScript -->
+        <script>
+            const toggleBtn = document.getElementById('toggleBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+            // Open sidebar
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                content.classList.add('shifted');
+            });
+    
+            // Close sidebar
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                content.classList.remove('shifted');
+            });
+    
+            // Dropdown toggle logic
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.parentElement;
+                    dropdown.classList.toggle('active');
+                });
+            });
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Wisata Di Malang</title>
+
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+
+        .section1{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.285), rgba(0, 0, 0, 0.2855)), url('image/bromo.webp');
+            background-size: cover;
+            height: 100vh;
+            background-position: center;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: rgba(52, 58, 64, 0.95);
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar h4 {
+            text-align: center;
+            padding: 1rem 0;
+            color: white;
+        }
+        .sidebar a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: white;
+            padding: 10px 20px;
+            display: block;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+            color: white;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .dropdown-menu {
+            padding-left: 1.5rem;
+            margin: 0;
+            display: none;
+            background-color: #495057; /* Menetapkan latar belakang dropdown menjadi putih */
+        }
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            font-size: 0.9rem;
+            color: white; /* Mengatur warna teks dropdown menjadi hitam */
+        }
+        .dropdown-menu a:hover {
+            color: #ffffff75;
+        }
+        .content {
+            margin-left: 0;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+        .content.shifted {
+            margin-left: 250px;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 1100;
+        }
+        .toggle-btn:hover {
+            background-color: #495057;
+        }
+
+        .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 100%);
+      z-index: 1;
+    }
+
+    .custom-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .custom-item .icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .custom-item .arrow-btn {
+            margin-left: auto;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+        .location-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .location-address {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .map-container iframe {
+            border: 0;
+            width: 90%;
+            height: 350px;
+        }
+
+        footer {
+            background-color: #495057;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 13px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <h4>Menu</h4>
+        <a href="index.html">Home</a>
+        
+        <!-- Dropdown 1 -->
+        <div class="dropdown">
+            <a href="#section2" class="dropdown-toggle" data-dropdown="dropdown1">Tempat Wisata</a>
+            <div class="dropdown-menu" id="dropdown1">
+                <a href="jatimpark1.html">Jatim Park 1</a>
+                <a href="jatimpark2.html">Jatim Park 2</a>
+                <a href="jatimpark3.html">Jatim Park 3</a>
+                <a href="baloga.html">Batu Love Garden</a>
+                <a href="drivethrupark.html">Drive Thru Park</a>
+                <a href="museumangkut.html">Museum Angkut</a>
+                <a href="bns.html">Batu Nihgt Spectacular</a>
+                <a href="selecta.html">Taman Rekreasi Selecta</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="toggle-btn" id="toggleBtn">
+        ☰
+    </button>
+  </div>
+
+  <div class="container my-5">
+    <div class="row g-4 my-4">
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="image/gambar24.webp" alt="Sky Copter">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="image/gambar25.webp" alt="Swing Ride">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="image/gambar26.webp" alt="Waterpark">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="image/gambar27.webp" alt="360 Spin">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="image/gambar28.webp" alt="360 Spin">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="image/gambar29.webp" alt="360 Spin">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container-fluid">
+      <div class="container">
+          <!-- Header Lokasi -->
+          <div class="row">
+              <div class="col-12">
+                  <h2 class="location-header">Batu Love Garden</h2>
+                  <div class="d-flex align-items-center location-address">
+                      <i class="bi bi-geo-alt-fill me-2 text-danger"></i>
+                      <span>Jl. Raya Pandanrejo No.91, Pandanrejo, Kec. Bumiaji, Kota Batu, Jawa Timur 65332, Indonesia</span>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Peta Google Maps -->
+          <div class="row">
+              <div class="col-12">
+                  <div class="map-container">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.2973207936825!2d112.54026697358182!3d-7.863922178176082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788176c89c5edd%3A0xc912577baebd778d!2sBatu%20Love%20Garden%20-%20BALOGA!5e0!3m2!1sid!2sid!4v1735055725242!5m2!1sid!2sid" 
+                      allowfullscreen="" 
+                      loading="lazy" 
+                      referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+              </div> 
+          </div>
+  
+          <div class="custom-item">
+              <div class="d-flex align-items-center">
+                  <i class="bi bi-clock icon"></i>
+                  <span>Buka Setiap Hari</span>
+                  <span class="mx-2">•</span>
+                  <span>Jam</span>
+              </div>
+              <button class="btn btn-link arrow-btn p-0 text-decoration-none" data-bs-toggle="modal" data-bs-target="#infoModal">
+                  <i class="bi bi-chevron-right"></i>
+              </button>
+          </div>
+      
+          <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h3 class="modal-title" id="infoModalLabel">Jam Buka</h3>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p style="font-size: 1.2rem;">Senin <span style="padding-left: 10rem;">08:30 - 16:30</span></p>
+                          <p style="font-size: 1.2rem;">Selasa <span style="padding-left: 9.6rem;">08:30 - 16:30</span></p>
+                          <p style="font-size: 1.2rem;">Rabu <span style="padding-left: 10.2rem;">08.30 - 16:30</span></p>
+                          <p style="font-size: 1.2rem;">Kamis <span style="padding-left: 9.8rem;">08:30 - 16:30</span></p>
+                          <p style="font-size: 1.2rem;">Jumat <span style="padding-left: 9.8rem;">08:30 - 16:30</span></p>
+                          <p style="font-size: 1.2rem;">Sabtu <span style="padding-left: 9.9rem;">08:30 - 16:30</span></p>
+                          <p style="font-size: 1.2rem;">Minggu <span style="padding-left: 8.8rem;">08:30 - 16:30</span></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="custom-item">
+            <div class="d-flex align-items-center">
+                <span style="font-size: 1.8rem;">Fasilitas</span>
+            </div>
+            <button class="btn btn-link arrow-btn p-0 text-decoration-none" data-bs-toggle="modal" data-bs-target="#infoModal2">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div class="modal fade" id="infoModal2" tabindex="-1" aria-labelledby="infoModalLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="infoModalLabel2">Fasilitas</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Deskripsi</h4>
+                        <p>Batu Love Garden (BALOGA) merupakan salah satu taman rekreasi terkenal di kota Batu yang menawarkan berbagai macam atraksi dan aktivitas untuk segala usia, mulai dari Pasar Wisata, Jeep Baloga, petik apel, parade, dan masih banyak lagi.<br><br>
+                            Kamu bisa menikmati pemandangan rangkaian bunga di Topiary Garden, menunggangi unta sambil melihat pemandangan dan menikmati sejuknya udara Batu. Selain itu, kamu juga bisa berfoto di berbagai macam spot foto yang memiliki tema rumah khas Santorini, Spanyol, Amerika, dan Jepang di Taman Gaya. Di zona ini juga terdapat persewaan baju Eropa loh!
+                        </p>
+                        <ol>
+                            <li>Food Court</li>
+                            <ol>Area makan yang menyediakan berbagai pilihan makanan dan minuman. Tersedia menu lokal dan internasional untuk memenuhi kebutuhan pengunjung.</ol>
+                            <li>Souvenir Shop</li>
+                            <ol>Toko oleh-oleh yang menjual berbagai merchandise, seperti kaos, boneka, hingga kerajinan tangan yang bertema BALOGA.</ol>
+                            <li>Kids Playground</li>
+                            <ol>Area bermain anak-anak dengan permainan seperti ayunan, seluncuran, dan lainnya yang dirancang aman dan menyenangkan.</ol>
+                            <li>Tempat Parkir Luas</li>
+                            <ol>Area parkir yang luas untuk kendaraan roda dua dan roda empat, dilengkapi dengan petugas keamanan untuk kenyamanan pengunjung.</ol>
+                            <li>Toilet Bersih</li>
+                            <ol>Fasilitas toilet yang bersih dan tersebar di berbagai area untuk memudahkan akses pengunjung.</ol>
+                            <li>Pusat Informasi</li>
+                            <ol>Fasilitas ini membantu pengunjung mendapatkan informasi tentang lokasi wahana, jadwal acara, dan peta area BALOGA.</ol>
+                            <li>Area Istirahat</li>
+                            <ol>Spot nyaman dengan tempat duduk untuk beristirahat setelah berjalan-jalan, lengkap dengan pohon rindang untuk suasana sejuk.</ol>
+                            <li>ATM Center</li>
+                            <ol>Fasilitas ATM dari berbagai bank untuk kebutuhan transaksi tunai pengunjung.</ol>
+                        </ol>
+                        <div style="text-align: right;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+          <div class="container" style="margin-top: 2rem; margin-bottom: 3rem;">
+              <h4>Info Penting & Highlight</h4>
+              <ul>
+                  <li>Batu Love Garden (BALOGA) adalah salah satu taman rekreasi favorit di Kota Batu yang terkenal akan berbagai macam atraksi untuk segala usia dan spot-spot foto cantik.</li>
+                  <li>Foto-foto di rumah khas Santorini, Spanyol, Amerika, dan Jepang di Taman Gaya.</li>
+                  <li>Melihat ratusan jenis dan berbagai bentuk bunga yang didesain secara menarik di Topiary Garden.</li>
+                  <li>Mengelilingi hamparan bunga sambil naik unta sambil menikmati segarnya udara kota Batu.</li>
+                  <li>Cocok untuk: Pencari Spot Foto, Keluarga Asyik, dan Geng Asyik.</li>
+              </ul>
+          </div>
+          <div style="margin-left: 0.9rem; margin-bottom: 2rem;">
+            <a href="index.html"><button type="button" class="btn btn-secondary">Back To Home</button></a>
+          </div> 
+    </div>
+  </div>
+
+  <div class="content">
+  </div>
+  <footer>
+    &copy; 2024 Pesona Indonesia
+  </footer>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Custom JavaScript -->
+        <script>
+            const toggleBtn = document.getElementById('toggleBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+            // Open sidebar
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                content.classList.add('shifted');
+            });
+    
+            // Close sidebar
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                content.classList.remove('shifted');
+            });
+    
+            // Dropdown toggle logic
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.parentElement;
+                    dropdown.classList.toggle('active');
+                });
+            });
+        </script>
+    </body>
+    </html>
